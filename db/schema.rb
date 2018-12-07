@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_123535) do
+ActiveRecord::Schema.define(version: 2018_12_07_052940) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -67,7 +67,15 @@ ActiveRecord::Schema.define(version: 2018_12_06_123535) do
     t.string "size", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "lcategory_id_id"
+    t.bigint "lcategory_id"
+    t.bigint "mcategory_id"
+    t.bigint "scategory_id"
+    t.index ["lcategory_id"], name: "index_items_on_lcategory_id"
+    t.index ["lcategory_id_id"], name: "index_items_on_lcategory_id_id"
+    t.index ["mcategory_id"], name: "index_items_on_mcategory_id"
     t.index ["name"], name: "index_items_on_name"
+    t.index ["scategory_id"], name: "index_items_on_scategory_id"
   end
 
   create_table "lcategories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -129,7 +137,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_123535) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name", null: false
-    t.string "image"
+    t.string "image", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -160,6 +168,9 @@ ActiveRecord::Schema.define(version: 2018_12_06_123535) do
   add_foreign_key "comments", "items"
   add_foreign_key "comments", "users"
   add_foreign_key "credit_cards", "users"
+  add_foreign_key "items", "lcategories"
+  add_foreign_key "items", "mcategories"
+  add_foreign_key "items", "scategories"
   add_foreign_key "shipping_methods", "items"
   add_foreign_key "users_details", "users"
 end
