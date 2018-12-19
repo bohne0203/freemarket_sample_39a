@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
     @nike = @items.where(brand: 'ナイキ').limit(4)
   end
 
+
   def show
     @item  = Item.find(params[:id])
 
