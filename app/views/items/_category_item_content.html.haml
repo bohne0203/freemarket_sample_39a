@@ -1,14 +1,15 @@
 - n = 0
 - @same_category_items.each do |s|
-  %section.item-box__content
-    %figure.item-box__content__image
-      = image_tag("#{@same_category_items[n].images.first.image}")
-    .item-box__content__detail
-      %h3.item-box__content__detail__name
-        = @same_category_items[n].name
-      .item-box__content__detail__inner
-        %h3.item-box__content__detail__inner__price
-          ¥ #{@same_category_items[n].price}
-        %p.item-box__content__detail__inner__tax
-          (税込)
-  - n += 1
+  = link_to "#{@item.id}" do
+    %section.item-box__content
+      %figure.item-box__content__image
+        = image_tag("#{@same_category_items[n].images.first.image}")
+      .item-box__content__detail
+        %h3.item-box__content__detail__name
+          = @same_category_items[n].name
+        .item-box__content__detail__inner
+          %h3.item-box__content__detail__inner__price
+            ¥ #{@same_category_items[n].price}
+          %p.item-box__content__detail__inner__tax
+            (税込)
+    - n += 1
