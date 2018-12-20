@@ -1,24 +1,26 @@
-$(function() {
-  var $children = $('#item_shipping_method_attributes_shipping_methods');
-  var original = $children.html();
+$(document).on('turbolinks:load', function() {
+  $(function() {
+    var $children = $('#item_shipping_method_attributes_shipping_methods');
+    var original = $children.html();
 
-  $('#item_shipping_method_attributes_burden_fee').change(function() {
-    var val1 = $(this).val();
+    $('#item_shipping_method_attributes_burden_fee').change(function() {
+      var val1 = $(this).val();
 
-    $children.html(original).find('option').each(function() {
-      var val2 = $(this).data('val');
-      if (val1 != val2) {
-        $(this).not(':first-child').remove();
+      $children.html(original).find('option').each(function() {
+        var val2 = $(this).data('val');
+        if (val1 != val2) {
+          $(this).not(':first-child').remove();
+        }
+      });
+
+      if ($(this).val() === val1||val2) {
+        var childSelect = $('.single-main__content__form__item__detail--second')
+        childSelect.show();
+      }
+      else{
+        childSelect.hide();
       }
     });
-
-    if ($(this).val() === val1||val2) {
-      var childSelect = $('.single-main__content__form__item__detail--second')
-      childSelect.show();
-    }
-    else{
-      childSelect.hide();
-    }
   });
 });
 
