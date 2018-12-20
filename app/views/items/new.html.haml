@@ -17,12 +17,23 @@
             = f.fields_for :images do |fini|
               .single-main__content__form__item__image
                 = fini.label :image, class:"upload-box" do
-                  画像はこちら
-                  = fini.file_field :image, multiple:"true",onchange:"previewFiles()",class: 'hidden'
-                  = image_tag :"",height:"120",width:"120",name:"preview0",class:"preview"
-                  = image_tag :"",height:"120",width:"120",name:"preview1",class:"preview"
-                  = image_tag :"",height:"120",width:"120",name:"preview2",class:"preview"
-                  = image_tag :"",height:"120",width:"120",name:"preview3",class:"preview"
+                  = fini.file_field :image, class: 'hidden'
+                  = image_tag "", height:"140", width:"140",class: 'item_image',alt:"画像はこちらに"
+            = f.fields_for :images do |fini|
+              .single-main__content__form__item__image
+                = fini.label :image, class:"upload-box" do
+                  = fini.file_field :image, class: 'hidden2'
+                  = image_tag "", height:"140", width:"140",class: 'item_image2',alt:"画像はこちらに"
+            = f.fields_for :images do |fini|
+              .single-main__content__form__item__image
+                = fini.label :image, class:"upload-box" do
+                  = fini.file_field :image, class: 'hidden3'
+                  = image_tag "", height:"140", width:"140",class: 'item_image3',alt:"画像はこちらに"
+            = f.fields_for :images do |fini|
+              .single-main__content__form__item__image
+                = fini.label :image, class:"upload-box" do
+                  = fini.file_field :image, class: 'hidden4'
+                  = image_tag "", height:"140", width:"140",class: 'item_image4',alt:"画像はこちらに"
           .single-main__content__form__item
             .single-main__content__form__item__detail
               %label 商品名
@@ -41,36 +52,15 @@
                 %span.form-yes4__label-req 必須
                 %div
                   .select-wrap
-                    = f.select :lcategory_id do
-                      %option{value:"" } ---
-                      %option{value:"レディース"}レディース
-                      %option{value:"メンズ"}メンズ
-                      %option{value:"本・音楽・ゲーム"}本・音楽・ゲーム
+                    = f.select :lcategory_id, Lcategory.all.map{|o| [o.name, o.id]},prompt:"---"
                     = fa_icon 'angle-down'
                 %div
                   .select-wrap
-                    = f.select :mcategory_id do
-                      %option{value:"" } ---
-                      %option{value:"トップス","data-val": "レディース"}トップス
-                      %option{value:"スカート","data-val": "レディース"}スカート
-                      %option{value:"ワンピース","data-val": "レディース"}ワンピース
-                      %option{value:"トップス","data-val": "メンズ"}トップス
-                      %option{value:"ジャケット/アウター","data-val": "メンズ"}ジャケット/アウター
-                      %option{value:"パンツ","data-val": "メンズ"}パンツ
-                      %option{value:"本","data-val": "本・音楽・ゲーム"}本
-                      %option{value:"漫画","data-val": "本・音楽・ゲーム"}漫画
-                      %option{value:"雑誌","data-val": "本・音楽・ゲーム"}雑誌
+                    = f.select :mcategory_id, Mcategory.all.map{|o| [o.name, o.id]},prompt:"---"
                     = fa_icon 'angle-down'
                 %div
                   .select-wrap
-                    = f.select :scategory_id do
-                      %option{value:"" } ---
-                      %option{value:"ポロシャツ","data-val": "トップス"}ポロシャツ
-                      %option{value:"キャミソール","data-val": "トップス"}キャミソール
-                      %option{value:"ミニスカート","data-val": "スカート"}ミニスカート
-                      %option{value:"ひざ丈スカート","data-val": "スカート"}ひざ丈スカート
-                      %option{value:"ミニワンピース","data-val": "ワンピース"}ミニワンピース
-                      %option{value:"ロングワンピース","data-val": "ワンピース"}ロングワンピース
+                    = f.select :scategory_id, Scategory.all.map{|o| [o.name, o.id]},prompt:"---"
                     = fa_icon 'angle-down'
               .single-main__content__form__item__detail
                 %label サイズ

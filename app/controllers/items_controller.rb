@@ -17,8 +17,8 @@ class ItemsController < ApplicationController
     @item  = Item.find(params[:id])
 
     @thumbnails = @item.images
-    @same_saler_items = Item.where(saler_id: @item.saler_id).where.not(id: @item.id).first(6)
-    @same_category_items = Item.where(lcategory_id: @item.lcategory_id).where.not(id: @item.id).first(6)
+    @same_saler_items = Item.where(saler_id: @item.saler_id).where.not(id: @item.id).order('id DESC').limit(6)
+    @same_category_items = Item.where(lcategory_id: @item.lcategory_id).where.not(id: @item.id).order('id DESC').limit(6)
   end
 
 
@@ -80,7 +80,22 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :price, :detail, :condition, :size, :brand, :lcategory_id, :mcategory_id,:scategory_id, shipping_method_attributes: [:id, :burden_fee, :shipping_methods, :days_to_arrival, :prefecuture], images_attributes: [:id, :image]).merge(saler_id: current_user.id)
+    params.require(:item).permit(:name, :price, :detail, :condition, :size, :brand, :lcategory_id, :mcategory_id,:scategory_id, shipping_method_attributes: [:id, :burden_fee, :shipping_methods, :days_to_arrival, :prefecuture], images_attributes: [:id,:image]).merge(saler_id: current_user.id)
+  end
+
+  def create_hash
+    image = []
+    hash_image = {}
+    n = params.require(:item).require(:images_attributes).require(:"0")[:image].length-1
+    for i in 0..n
+      image << params.require(:item).require(:images_attributes).require(:"0")[:image][i]
+    end
+
+    for i in 0..n
+      hash = {"image" => image[i]}
+      hash_image.store(i.to_s, hash)
+    end
+    params.require(:item)[:images_attributes] = hash_image
   end
 
 end
