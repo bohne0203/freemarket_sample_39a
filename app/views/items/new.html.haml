@@ -18,22 +18,22 @@
               .single-main__content__form__item__image
                 = fini.label :image, class:"upload-box" do
                   = fini.file_field :image, class: 'hidden'
-                  = image_tag "", height:"140", width:"140",class: 'item_image'
+                  = image_tag "", height:"140", width:"140",class: 'item_image',alt:"画像はこちらに"
             = f.fields_for :images do |fini|
               .single-main__content__form__item__image
                 = fini.label :image, class:"upload-box" do
                   = fini.file_field :image, class: 'hidden2'
-                  = image_tag "", height:"140", width:"140",class: 'item_image2'
+                  = image_tag "", height:"140", width:"140",class: 'item_image2',alt:"画像はこちらに"
             = f.fields_for :images do |fini|
               .single-main__content__form__item__image
                 = fini.label :image, class:"upload-box" do
                   = fini.file_field :image, class: 'hidden3'
-                  = image_tag "", height:"140", width:"140",class: 'item_image3'
+                  = image_tag "", height:"140", width:"140",class: 'item_image3',alt:"画像はこちらに"
             = f.fields_for :images do |fini|
               .single-main__content__form__item__image
                 = fini.label :image, class:"upload-box" do
                   = fini.file_field :image, class: 'hidden4'
-                  = image_tag "", height:"140", width:"140",class: 'item_image4'
+                  = image_tag "", height:"140", width:"140",class: 'item_image4',alt:"画像はこちらに"
           .single-main__content__form__item
             .single-main__content__form__item__detail
               %label 商品名
