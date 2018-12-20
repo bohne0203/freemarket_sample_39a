@@ -10,10 +10,10 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :shipping_method
   has_many :images, dependent: :destroy
   accepts_nested_attributes_for :images
-
+  has_many :brands
   validates :name, presence:true, length: { maximum: 40 }
   validates :images, presence:true
-  validates :detail, presence:true, length: { maximum: 1000 }
+  validates :detail, presence:true,length: { maximum: 40 }
   validates :condition, presence:true
 
 end

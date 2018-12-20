@@ -6,12 +6,6 @@ Rails.application.routes.draw do
 
   root 'items#index'
 
-  resources :users, only: [:index, :new, :show, :destroy]do
-    collection do
-      get 'new1','new2','new3','new4','create_finish','user_confilm','user_profile', 'credit'
-    end
-  end
-
   resources :items do
     collection do
       get ':id/seller' => 'items#seller'
@@ -19,5 +13,13 @@ Rails.application.routes.draw do
       get  'sell_item'
     end
   end
+
+  resources :users, only: [:index, :new, :show, :destroy]do
+    collection do
+      get 'new1','new2','new3','new4','create_finish','user_confilm','user_profile', 'credit'
+    end
+  end
+
+
 
 end
