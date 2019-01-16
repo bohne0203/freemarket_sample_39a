@@ -4,7 +4,8 @@ $(document).on('turbolinks:load', function() {
     loop: true,
     pagination: '.swiper-pagination',
     nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev'
+    prevButton: '.swiper-button-prev',
+    autoplay: 3000
     });
   }, false);
 })
