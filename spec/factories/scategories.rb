@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :scategory do
+    id                "1"
+    name              "手袋"
   end
 end

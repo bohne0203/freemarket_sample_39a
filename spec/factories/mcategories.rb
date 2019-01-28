@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :mcategory do
+    id              "2"
+    name            "デニム"
   end
 end

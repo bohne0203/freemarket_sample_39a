@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :lcategory do
+    id               "1"
+    name             "メンズ"
   end
 end
